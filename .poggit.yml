@@ -1,0 +1,8 @@
+--- # Open the SlapperRotation CI at https://poggit.pmmp.io/ci/xqwtxon/SlapperRotation
+build-by-default: true
+branches:
+- main
+projects:
+  SlapperRotation:
+    path: ""
+...
