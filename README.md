@@ -11,4 +11,4 @@ Just put this plugin in your `plugins/` folder, and it should work!<br>
 You can configure the plugin by accessing `plugin_data/SlapperRotation/config.yml`
 
 # Report a Problen
-If you found a problem, you can [create an issue!](https://github.com/xqwtxon/SlapperRotation/issue
+If you found a problem, you can [create an issue!](https://github.com/xqwtxon/SlapperRotation/issue)
