@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
 			return;
 		}
 		$maxDistance = $this->getConfig()->get("max-distance");
-		foreach ($player->getLevel()->getNearbyEntities($player->getBoundingBox()->expandedCopy($maxDistance, $maxDistance, $maxDistance), $player) as $e) {
+		foreach ($player->getWorld()->getNearbyEntities($player->getBoundingBox()->expandedCopy($maxDistance, $maxDistance, $maxDistance), $player) as $e) {
 			if($e instanceof Player) {
 				continue;
 			}
@@ -51,13 +51,13 @@ class Main extends PluginBase implements Listener {
 				case "SlapperShulker":
 					continue 2;
 			}
-			$xdiff = $player->x - $e->x;
-			$zdiff = $player->z - $e->z;
+			$xdiff = $player->getX - $e->getX;
+			$zdiff = $player->getZ - $e->getZ;
 			$angle = atan2($zdiff, $xdiff);
 			$yaw = (($angle * 180) / M_PI) - 90;
 			$ydiff = $player->y - $e->y;
-			$v = new Vector2($e->x, $e->z);
-			$dist = $v->distance($player->x, $player->z);
+			$v = new Vector2($e->getX, $e->getZ);
+			$dist = $v->distance($player->getX, $player->getZ);
 			$angle = atan2($dist, $ydiff);
 			$pitch = (($angle * 180) / M_PI) - 90;
 
