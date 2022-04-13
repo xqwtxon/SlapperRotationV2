@@ -2,83 +2,70 @@
 
 namespace SlapperRotation;
 
-use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerMoveEvent;
-use pocketmine\math\Vector2;
-use pocketmine\network\mcpe\protocol\MoveActorAbsolutePacket;
-use pocketmine\network\mcpe\protocol\MovePlayerPacket;
-use pocketmine\player\Player;
+use SlapperRotation\SlapperListener;
 use pocketmine\plugin\PluginBase;
+use SlapperRotation\SlapperInfo;
+use pocketmine\utils\TextFormat;
+use pocketmine\network\mcpe\protocol\ProtocolInfo;
+use pocketmine\VersionInfo;
 
-class Main extends PluginBase implements Listener {
-    const PRODUCT_KEY = "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99";
-    
+class Main extends PluginBase implements SlapperInfo {
+    public static function getInstance() : self
+    {
+        return self::$instance;
+    }
+    /** @var self */
+    private static self $instance;
     public function onLoad() :void{
-        if ($this->getConfig()->get("product-key") == self::PRODUCT_KEY){
-            $this->getServer()->getLogger()->info("[SR] Product Key was Verified!");
+        $this->saveResource("config.yml");
+        $config = $this->getConfig();
+        $log = $this->getServer()->getLogger();
+        $prefix = $config->get("prefix");
+        $version = SlapperInfo::PLUGIN_VERSION;
+        $log->notice($prefix.TextFormat::YELLOW."You are running §aSlapperRotation {$version} §eby xqwtxon!");
+        if ($config->get("config-version") == SlapperInfo::CONFIG_VERSION){
+            $log->info($prefix."Loaded SlapperRotation!");
         } else {
-            $this->getServer()->getLogger()->info("[SR] Product Key is Invalid! Get License on https://github.com/xqwtxon/SlapperRotation/#Product-Key!");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
+            $log->info($prefix."Your config is outdated!");
+            $log->info($prefix."Your old config.yml was as old-config.yml");
+            @rename($this->getDataFolder(). 'config.yml', 'old-config.yml');
+            $this->saveResource("config.yml");
+        }
+        
+        if (SlapperInfo::IS_DEVELOPMENT_BUILD == true){
+            $log->warning($prefix.TextFormat::RED."Your SlapperRotation is in development build! You may expect crash during the plugin. You can make issue about this plugin by visiting plugin github issue!");
         }
     }
     
     
 	public function onEnable() :void{
+	    $config = $this->getConfig();
+        $log = $this->getServer()->getLogger();
+        $prefix = $config->get("prefix");
+        
+            if (SlapperInfo::PROTOCOL_VERSION == ProtocolInfo::CURRENT_PROTOCOL){
+                $log->info($prefix.TextFormat::GREEN."Your SlapperRotation is Compatible with your version!");
+            } else {
+                $log->info($prefix.TextFormat::RED."Your SlapperRotation isnt Compatible with your version!");
+                $this->getServer()->getPluginManager()->disablePlugin($this);
+            }
+        
+        
+        if ($config->get("max-distance") == 4){
+            $log->info($prefix.TextFormat::RED."Your max distance is too low. Make sure your max-distance in config is not at least higher on 4!");
+            $log->info($prefix."Max-Distance was changed to 16 as default.");
+            $config->set("max-distance", 16);
+            return;
+        } else {
+            $this->getServer()->getPluginManager()->registerEvents(new SlapperListener($this), $this);
+        }
 		$this->saveDefaultConfig();
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
-
-	public function onPlayerMove(PlayerMoveEvent $ev) {
-		$player = $ev->getPlayer();
-		$from = $ev->getFrom();
-		$to = $ev->getTo();
-		if($from->distance($to) < 0.1) {
-			return;
-		}
-		$maxDistance = $this->getConfig()->get("max-distance");
-		foreach ($player->getWorld()->getNearbyEntities($player->getBoundingBox()->expandedCopy($maxDistance, $maxDistance, $maxDistance), $player) as $e) {
-			if($e instanceof Player) {
-				continue;
-			}
-			if(substr($e->getSaveId(), 0, 7) !== "Slapper") {
-				continue;
-			}
-			switch ($e->getSaveId()) {
-				case "SlapperFallingSand":
-				case "SlapperMinecart":
-				case "SlapperBoat":
-				case "SlapperPrimedTNT":
-				case "SlapperShulker":
-					continue 2;
-			}
-			$xdiff = $player->getX - $e->getX;
-			$zdiff = $player->getZ - $e->getZ;
-			$angle = atan2($zdiff, $xdiff);
-			$yaw = (($angle * 180) / M_PI) - 90;
-			$ydiff = $player->y - $e->y;
-			$v = new Vector2($e->getX, $e->getZ);
-			$dist = $v->distance($player->getX, $player->getZ);
-			$angle = atan2($dist, $ydiff);
-			$pitch = (($angle * 180) / M_PI) - 90;
-
-			if($e->getSaveId() === "SlapperHuman") {
-				$pk = new MovePlayerPacket();
-				$pk->entityRuntimeId = $e->getId();
-				$pk->position = $e->asVector3()->add(0, $e->getEyeHeight(), 0);
-				$pk->yaw = $yaw;
-				$pk->pitch = $pitch;
-				$pk->headYaw = $yaw;
-				$pk->onGround = $e->onGround;
-			} else {
-				$pk = new MoveActorAbsolutePacket();
-				$pk->entityRuntimeId = $e->getId();
-				$pk->position = $e->asVector3();
-				$pk->xRot = $pitch;
-				$pk->yRot = $yaw;
-				$pk->zRot = $yaw;
-			}
-			$player->dataPacket($pk);
-		}
+	
+	public function onDisable() :void {
+	    $config = $this->getConfig();
+        $log = $this->getServer()->getLogger();
+        $prefix = $config->get("prefix");
+        $log->info($prefix.TextFormat::RED."Successfully disabled the plugin!");
 	}
-
 }

@@ -1,5 +1,15 @@
+# SlapperRotation
+# Updated Version for API 4.0.0 PocketMine-MP
+
+# Message Prefix
+prefix: "§7[§eSR§7] "
+
 # Max Distance Between Slapper to player.
 max-distance: 16
 
 # License Key
 product-key: "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
+
+# Config Version
+# Please dont change/modify unless you know what you are doing!
+config-version: "1.0.1"
