@@ -1,6 +1,6 @@
 <?php
 
-namespace SlapperRotation;
+namespace xqwtxon\SlapperRotation;
 
 interface SlapperInfo {
     /**

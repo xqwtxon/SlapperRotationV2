@@ -1,6 +1,6 @@
 <?php
 
-namespace SlapperRotation;
+namespace xqwtxon\SlapperRotation;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
