@@ -1,5 +1,6 @@
 name: SlapperRotation
-main: SlapperRotation\Main
+main: xqwtxon\SlapperRotation\Main
+src-namespace-prefix: xqwtxon\SlapperRotation
 version: 2.0.0
 api: [4.0.0]
 depend: Slapper
