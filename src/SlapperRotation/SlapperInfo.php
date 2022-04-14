@@ -16,11 +16,12 @@ interface SlapperInfo {
     const BRANCH = "main";
     const PLUGIN_DESCRIPTION = "Slappers look at players!";
     const MAIN = "SlapperRotation\Main";
-    const CONFIG_VERSION = "1.0.3";
+    const CONFIG_VERSION = "1.0.4";
     const POCKETMINE_VERSION = "4.2.6";
     const PROTOCOL_VERSION = 486;
     const PLUGIN_VERSION = "2.0.0";
     const VERSION = "v2.0.0";
     const DEFAULT_MAX_DISTANCE = 8;
+    const DEFAULT_MINIMUM_DISTANCE = 4;
     const IS_DEVELOPMENT_BUILD = true;
 }

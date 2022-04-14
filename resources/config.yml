@@ -2,11 +2,11 @@
 # Updated Version for API 4.0.0 PocketMine-MP
 
 # Message Prefix
-prefix: "§7[§eSR§7] "
+prefix: "§7[§eSlapperRotation§7] "
 
 # Max Distance Between Slapper to player.
 max-distance: 8
 
 # Config Version
 # Please dont change/modify unless you know what you are doing!
-config-version: "1.0.3"
+config-version: "1.0.4"
