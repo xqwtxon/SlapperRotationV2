@@ -1,4 +1,6 @@
 # SlapperRotation
+[![](https://poggit.pmmp.io/shield.state/SlapperRotationV2)](https://poggit.pmmp.io/p/SlapperRotationV2)
+[![](https://poggit.pmmp.io/shield.api/SlapperRotationV2)](https://poggit.pmmp.io/p/SlapperRotationV2)<br>
 This plugin was updated on 4.0.0 api!
 This is designed for PocketMine-MP Slapper, This plugin uses Slapper plugin in PocketMine-MP
 It is plugin that looking slapper to player within the chunks!
