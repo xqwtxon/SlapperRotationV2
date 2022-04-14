@@ -23,5 +23,5 @@ interface SlapperInfo {
     const VERSION = "v2.0.0";
     const DEFAULT_MAX_DISTANCE = 8;
     const DEFAULT_MINIMUM_DISTANCE = 4;
-    const IS_DEVELOPMENT_BUILD = true;
+    const IS_DEVELOPMENT_BUILD = false;
 }
