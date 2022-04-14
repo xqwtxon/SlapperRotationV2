@@ -12,8 +12,9 @@ It is plugin that looking slapper to player within the chunks!
 This plugin was designed and work in pocketmine. If you are using fork/spoon of PocketMine-MP. Your issues will automatically closed.
 
 # How to Install?
-Just put this plugin in your `plugins/` folder, and it should work!<br>
-You can configure the plugin by accessing `plugin_data/SlapperRotation/config.yml`
+- You must have Slapper Plugin, you can download from [poggit here](https://poggit.pmmp.io/p/Slapper/2.0.6)!
+- Just put this plugin in your `plugins/` folder, and it should work!<br>
+- You can configure the plugin by accessing `plugin_data/SlapperRotation/config.yml`
 
 # Report a Issue/Bug
 You found a bug or a plugin issue?
