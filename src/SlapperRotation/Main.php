@@ -45,10 +45,10 @@ class Main extends PluginBase implements SlapperInfo {
             }
         
         
-        if ($config->get("max-distance") == 4){
+        if ($config->get("max-distance") < 4){
             $log->info($prefix.TextFormat::RED."Your max distance is too low. Make sure your max-distance in config is not at least higher on 4!");
             $log->info($prefix."Max-Distance was changed to 16 as default.");
-            $config->set("max-distance", 16);
+            $config->set("max-distance", 8);
             return;
         } else {
             $this->getServer()->getPluginManager()->registerEvents(new SlapperListener($this), $this);

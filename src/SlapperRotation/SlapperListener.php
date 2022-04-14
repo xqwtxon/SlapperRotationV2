@@ -10,18 +10,20 @@ use pocketmine\network\mcpe\protocol\MovePlayerPacket;
 use pocketmine\player\Player;
 use slapper\entities\SlapperEntity;
 use slapper\entities\SlapperHuman;
-use SlapperRotation\Main as Loader;
+use SlapperRotation\Main;
 
 class SlapperListener implements Listener {
-    
+    public function __construct(private Main $plugin){
+        //NOOP
+    }
     public function onMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
+        $maxDistance = $this->plugin->getConfig()->get("max-distance");
 
             if ($event->getFrom()->distance($event->getTo()) < 0.1) {
                 return;
             }
-
-            foreach ($player->getWorld()->getNearbyEntities($player->getBoundingBox()->expandedCopy(8, 8, 8), $player) as $entity) {
+            foreach ($player->getWorld()->getNearbyEntities($player->getBoundingBox()->expandedCopy($maxDistance, $maxDistance, $maxDistance), $player) as $entity) {
                 if (($entity instanceof SlapperHuman) or $entity instanceof SlapperEntity) {
                     $angle = atan2($player->getLocation()->z - $entity->getLocation()->z, $player->getLocation()->x - $entity->getLocation()->x);
                     $yaw = (($angle * 180) / M_PI) - 90;
