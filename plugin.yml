@@ -1,6 +1,6 @@
 name: SlapperRotationV2
 main: SlapperRotationV2\Main
-src-namespace-prefix: src\xqwtxon\SlapperRotationV2
+src-namespace-prefix: src\SlapperRotationV2
 version: 2.0.0
 api: [4.0.0]
 depend: Slapper
