@@ -1,7 +1,7 @@
 # SlapperRotation
 # Updated Version for API 4.0.0 PocketMine-MP
 
-# Message Prefix
+# Message and Log Prefix
 prefix: "§7[§eSlapperRotation§7] "
 
 # Max Distance Between Slapper to player.
