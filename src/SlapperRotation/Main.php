@@ -10,12 +10,6 @@ use pocketmine\network\mcpe\protocol\ProtocolInfo;
 use pocketmine\VersionInfo;
 
 class Main extends PluginBase implements SlapperInfo {
-    public static function getInstance() : self
-    {
-        return self::$instance;
-    }
-    /** @var self */
-    private static self $instance;
     public function onLoad() :void{
         $this->saveResource("config.yml");
         $config = $this->getConfig();

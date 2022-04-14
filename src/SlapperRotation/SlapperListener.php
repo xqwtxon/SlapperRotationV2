@@ -8,6 +8,8 @@ use pocketmine\math\Vector2;
 use pocketmine\network\mcpe\protocol\MoveActorAbsolutePacket;
 use pocketmine\network\mcpe\protocol\MovePlayerPacket;
 use pocketmine\player\Player;
+use slapper\entities\SlapperEntity;
+use slapper\entities\SlapperHuman;
 use SlapperRotation\Main as Loader;
 
 class SlapperListener implements Listener {
