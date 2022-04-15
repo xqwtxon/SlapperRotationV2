@@ -17,7 +17,7 @@ class Main extends PluginBase implements SlapperInfo {
         $version = SlapperInfo::PLUGIN_VERSION;
         $log->notice(TextFormat::YELLOW."[INFO] You are running §aSlapperRotation {$version} §eby xqwtxon!");
         if ($config->get("config-version") == SlapperInfo::CONFIG_VERSION){
-            $log->info($"[SUCCESS] Loaded SlapperRotation!");
+            $log->info("[SUCCESS] Loaded SlapperRotation!");
         } else {
             $log->notice("[WARNING] Your config is outdated!");
             $log->info("[WARNING] Your old config.yml was as old-config.yml");
