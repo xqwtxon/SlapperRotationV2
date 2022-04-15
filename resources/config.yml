@@ -7,6 +7,9 @@ prefix: "§7[§eSlapperRotation§7] "
 # Max Distance Between Slapper to player.
 max-distance: 8
 
+# SlapperRotation should enabled? [>>NEW<<]
+enabled: true
+
 # Config Version
 # Please dont change/modify unless you know what you are doing!
 config-version: "1.0.4"
