@@ -40,8 +40,8 @@ class Main extends PluginBase implements SlapperInfo {
                 $log->info(TextFormat::RED."[ERROR] Your SlapperRotation isnt Compatible with your version!");
                 $this->getServer()->getPluginManager()->disablePlugin($this);
             }
-        
-        if (!isset($config->get("max-distance"))){
+        $maxDistance = $config->get("max-distance");
+        if (!isset($maxDistance){
             $log->info("[ERROR] Max Distance cant be blank!");
             $config->set("max-distance", 8);
             return;
