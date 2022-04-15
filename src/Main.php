@@ -41,6 +41,7 @@ class Main extends PluginBase implements SlapperInfo {
                 $this->getServer()->getPluginManager()->disablePlugin($this);
             }
         $maxDistance = $config->get("max-distance");
+        $toggle = $config->get("enabled");
         if (!isset($maxDistance)){
             $log->info("[ERROR] Max Distance cant be blank!");
             $config->set("max-distance", 8);
