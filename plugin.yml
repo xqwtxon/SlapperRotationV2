@@ -1,8 +1,10 @@
+---
 name: SlapperRotationV2
-main: SlapperRotationV2\Main
-src-namespace-prefix: SlapperRotationV2\
 version: 2.0.1
-api: [4.0.0]
+main: xqwtxon\SlapperRotationV2\Main
+api: 4.2.8
+src-namespace-prefix: xqwtxon\SlapperRotationV2
 depend: Slapper
 author: xqwtxon
 description: Slappers look at players!
+...
