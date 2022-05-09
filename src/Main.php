@@ -15,7 +15,6 @@ class Main extends PluginBase implements SlapperInfo {
         $config = $this->getConfig();
         $log = $this->getServer()->getLogger();
         $version = SlapperInfo::PLUGIN_VERSION;
-        $log->notice(TextFormat::YELLOW."[INFO] You are running §aSlapperRotation {$version} §eby xqwtxon!");
         if ($config->get("config-version") == SlapperInfo::CONFIG_VERSION){
             $log->info("[SUCCESS] Loaded SlapperRotation!");
         } else {
@@ -62,12 +61,5 @@ class Main extends PluginBase implements SlapperInfo {
                 $log->warning("[INFO] The SlapperRotation is disabled by configuration.");
             }
 		$this->saveDefaultConfig();
-	}
-	
-	public function onDisable() :void {
-	    $config = $this->getConfig();
-        $log = $this->getServer()->getLogger();
-        $prefix = $config->get("prefix");
-        $log->info($prefix.TextFormat::RED."Successfully disabled the plugin!");
 	}
 }
