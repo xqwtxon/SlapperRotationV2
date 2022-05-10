@@ -17,8 +17,8 @@ interface SlapperInfo {
     const PLUGIN_DESCRIPTION = "Slappers look at players!";
     const MAIN = "SlapperRotation\Main";
     const CONFIG_VERSION = "1.0.4";
-    const POCKETMINE_VERSION = "4.2.6";
-    const PROTOCOL_VERSION = 486;
+    const POCKETMINE_VERSION = "4.3.2";
+    const PROTOCOL_VERSION = 503;
     const PLUGIN_VERSION = "2.0.1";
     const VERSION = "v2.0.1";
     const DEFAULT_MAX_DISTANCE = 8;
