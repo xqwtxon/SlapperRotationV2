@@ -13,41 +13,41 @@ class Main extends PluginBase implements SlapperInfo {
     public function onLoad() :void{
         $this->saveResource("config.yml");
         $config = $this->getConfig();
-        $log = $this->getServer()->getLogger();
+        $log = $this->getLogger();
         $version = SlapperInfo::PLUGIN_VERSION;
         if ($config->get("config-version") == SlapperInfo::CONFIG_VERSION){
-            $log->info("[SUCCESS] Loaded SlapperRotation!");
+            return;
         } else {
-            $log->notice("[WARNING] Your config is outdated!");
-            $log->info("[WARNING] Your old config.yml was as old-config.yml");
+            $log->notice("Your config is outdated!");
+            $log->info("Your old config.yml was as old-config.yml");
             @rename($this->getDataFolder(). 'config.yml', 'old-config.yml');
             $this->saveResource("config.yml");
         }
         
         if (SlapperInfo::IS_DEVELOPMENT_BUILD == true){
-            $log->warning(TextFormat::RED."[WARNING] Your SlapperRotation is in development build! You may expect crash during the plugin. You can make issue about this plugin by visiting plugin github issue!");
+            $log->warning(TextFormat::RED."Your SlapperRotation is in development build! You may expect crash during the plugin. You can make issue about this plugin by visiting plugin github issue!");
         }
     }
     
     
-	public function onEnable() :void{
-	    $config = $this->getConfig();
-        $log = $this->getServer()->getLogger();
+	public function onEnable() :void {
+        $config = $this->getConfig();
+        $log = $this->getLogger();
             if (SlapperInfo::PROTOCOL_VERSION == ProtocolInfo::CURRENT_PROTOCOL){
-                $log->info(TextFormat::GREEN."[INFO] Your SlapperRotation is Compatible with your version!");
+                $log->info(TextFormat::GREEN."Your SlapperRotation is Compatible with your version!");
             } else {
-                $log->info(TextFormat::RED."[ERROR] Your SlapperRotation isnt Compatible with your version!");
+                $log->info(TextFormat::RED."Your SlapperRotation isnt Compatible with your version!");
                 $this->getServer()->getPluginManager()->disablePlugin($this);
             }
         $maxDistance = $config->get("max-distance");
         $toggle = $config->get("enabled");
         if (!isset($maxDistance)){
-            $log->info("[ERROR] Max Distance cant be blank!");
+            $log->info("Max Distance cant be blank!");
             $config->set("max-distance", 8);
             return;
         }
         if ($config->get("max-distance") < SlapperInfo::DEFAULT_MINIMUM_DISTANCE){
-            $log->info(TextFormat::RED."[ERROR] Your max distance is too low. Make sure your max-distance in config is not at least higher on 4!");
+            $log->info(TextFormat::RED."Your max distance is too low. Make sure your max-distance in config is not at least higher on 4!");
             $log->info("[INFO] Max-Distance was changed to 16 as default.");
             $config->set("max-distance", 8);
             return;
@@ -58,7 +58,7 @@ class Main extends PluginBase implements SlapperInfo {
             }
             
             if ($toggle == false){
-                $log->warning("[INFO] The SlapperRotation is disabled by configuration.");
+                $log->warning("The SlapperRotation is disabled by configuration.");
             }
 		$this->saveDefaultConfig();
 	}
