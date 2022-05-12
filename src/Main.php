@@ -6,13 +6,13 @@ use xqwtxon\SlapperRotationV2\SlapperListener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
-class Main extends PluginBase implements SlapperInfo {
+class Main extends PluginBase {
     public function onLoad() :void{
         $this->saveResource("config.yml");
         $config = $this->getConfig();
         $log = $this->getLogger();
         $version = "1.0.4";
-        if ($config->get("config-version") == SlapperInfo::CONFIG_VERSION){
+        if ($config->get("config-version") == $version){
             return;
         } else {
             $log->notice("Your config is outdated!");
