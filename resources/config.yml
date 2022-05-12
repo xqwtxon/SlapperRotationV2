@@ -12,4 +12,4 @@ enabled: true
 
 # Config Version
 # Please dont change/modify unless you know what you are doing!
-config-version: "1.0.4"
+config-version: "1.0.5"
