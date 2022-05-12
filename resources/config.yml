@@ -1,14 +1,13 @@
-# SlapperRotation
-# Updated Version for API 4.0.0 PocketMine-MP
-
-# Message and Log Prefix
-prefix: "§7[§eSlapperRotation§7] "
+# SlapperRotationV2
+# Here you can configure slapper what can do. 
 
 # Max Distance Between Slapper to player.
 max-distance: 8
 
-# SlapperRotation should enabled? [>>NEW<<]
+# SlapperRotation should enabled?
 enabled: true
+
+
 
 # Config Version
 # Please dont change/modify unless you know what you are doing!
