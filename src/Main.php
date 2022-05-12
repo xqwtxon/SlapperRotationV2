@@ -11,7 +11,7 @@ class Main extends PluginBase {
         $this->saveResource("config.yml");
         $config = $this->getConfig();
         $log = $this->getLogger();
-        $version = "1.0.4";
+        $version = "1.0.5";
         if ($config->get("config-version") == $version){
             return;
         } else {
