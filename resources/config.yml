@@ -4,9 +4,6 @@
 # Max Distance Between Slapper to player.
 max-distance: 8
 
-# SlapperRotation should enabled?
-enabled: true
-
 
 
 # Config Version
