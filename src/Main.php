@@ -15,10 +15,10 @@ class Main extends PluginBase {
     }
     
     private function checkConfig() :void{
-		$log = $this->getLogger();
-		$pluginConfigResource = $this->getResource("config.yml");
-		$pluginConfig = yaml_parse(stream_get_contents($pluginConfigResource));
-		fclose($pluginConfigResource);
+	$log = $this->getLogger();
+	$pluginConfigResource = $this->getResource("config.yml");
+	$pluginConfig = yaml_parse(stream_get_contents($pluginConfigResource));
+	fclose($pluginConfigResource);
 	    $config = $this->getConfig();
 		
 	    if($pluginConfig == false) {
