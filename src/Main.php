@@ -7,19 +7,17 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase {
-    public function onLoad() :void{
+	private string $version = "1.0.6";
+
+	public function onLoad() :void{
         $this->saveResource("config.yml");
         $config = $this->getConfig();
         $log = $this->getLogger();
-        $version = "1.0.5";
-        if ($config->get("config-version") == $version){
-            return;
-        } else {
-            $log->notice("Your config is outdated!");
-            $log->info("Your old config.yml was as old-config.yml");
-            @rename($this->getDataFolder(). 'config.yml', 'old-config.yml');
-            $this->saveResource("config.yml");
-        }
+        if ($config->get("config-version") == $this->version) return;
+        $log->notice("Your config is outdated!");
+        $log->info("Your old config.yml was as old-config.yml");
+        @rename($this->getDataFolder(). 'config.yml', 'old-config.yml');
+        $this->saveResource("config.yml");
     }
     
     
@@ -27,7 +25,6 @@ class Main extends PluginBase {
         $config = $this->getConfig();
         $log = $this->getLogger();
         $maxDistance = $config->get("max-distance");
-        $toggle = $config->get("enabled");
         if (!isset($maxDistance)){
             $log->info("Max Distance cant be blank!");
             $config->set("max-distance", 8);
