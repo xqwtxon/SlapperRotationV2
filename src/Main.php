@@ -10,6 +10,7 @@ class Main extends PluginBase {
 
 	public function onLoad() :void{
         $this->saveResource("config.yml");
+        $this->reloadConfig();
         $this->checkConfig();
     }
     
