@@ -32,10 +32,10 @@ class Main extends PluginBase {
 	    $log->info("Your old config.yml is renamed as old-config.yml");
 	    @rename($this->getDataFolder(). 'config.yml', 'old-config.yml');
 	    $this->saveResource("config.yml");
-
     }
 
 	public function onEnable() :void {
+        $this->loadListener();
         $config = $this->getConfig();
         $log = $this->getLogger();
         $maxDistance = $config->get("max-distance");
@@ -52,4 +52,9 @@ class Main extends PluginBase {
         }
 		$this->saveDefaultConfig();
 	}
+        
+
+        private function loadListener() {
+               $this->getServer()->getPluginManager()->registerEvents(new SlapperListener($this), $this);
+        }
 }
