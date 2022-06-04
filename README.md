@@ -1,4 +1,4 @@
-# SlapperRotationV2 <img src="https://poggit.pmmp.io/ci.badge/xqwtxon/SlapperRotationV2/SlapperRotationV2?build=16" size=90 />
+# SlapperRotationV2 <img src="https://poggit.pmmp.io/ci.badge/xqwtxon/SlapperRotationV2/SlapperRotationV2?build=16" align="right"/>
 [![](https://poggit.pmmp.io/shield.state/SlapperRotationV2)](https://poggit.pmmp.io/p/SlapperRotationV2)
 [![](https://poggit.pmmp.io/shield.dl.total/SlapperRotationV2)](https://poggit.pmmp.io/p/SlapperRotationV2/2.0.1)
 [![](https://poggit.pmmp.io/shield.dl/SlapperRotationV2)](https://poggit.pmmp.io/p/SlapperRotationV2)
